@@ -13,7 +13,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            cursor: pointer;
         }
         video {
             width: 100%;
@@ -23,10 +22,23 @@
         audio {
             display: none;
         }
+        #playButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 30px;
+            font-size: 20px;
+            background: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <video id="video" muted>
+    <video id="video" autoplay muted>
         <source src="Minimalist Illustrative Spooky Halloween Party Invitation.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -34,14 +46,15 @@
         <source src="audiomass-output.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
+    <button id="playButton">Enable Sound</button>
     <script>
-        document.body.addEventListener('click', function() {
+        document.getElementById('playButton').addEventListener('click', function() {
             let video = document.getElementById('video');
             let audio = document.getElementById('audio');
             video.muted = false;
-            video.play();
             audio.play();
-        }, { once: true });
+            this.style.display = 'none';
+        });
     </script>
 </body>
 </html>
